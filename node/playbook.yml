@@ -1,0 +1,19 @@
+---
+- name: "Run Node app"
+  hosts: instance1
+  tasks:
+    - name: "Install Node"
+      yum:
+        name: nodejs
+        state: latest
+    - name: "Install 'forever'"
+      npm:
+        name: forever
+        state: latest
+        global: yes
+    - name: "Copy server.js"
+      copy: 
+        src: "server.js"
+        dest: "~/server.js"
+    - name: "Start app"
+      command: "forever start ~/server.js &"
