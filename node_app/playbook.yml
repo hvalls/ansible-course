@@ -16,4 +16,4 @@
         src: "server.js"
         dest: "~/server.js"
     - name: "Start app"
-      command: "forever start ~/server.js &"
+      command: "forever start ~/server.js"
