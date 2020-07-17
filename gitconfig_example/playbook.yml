@@ -1,0 +1,7 @@
+---
+- name: Ensure gitconfig file is present
+  hosts: instance1
+  tasks:
+    - copy:
+        src: "gitconfig"
+        dest: "~/.gitconfig"
