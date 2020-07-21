@@ -2,5 +2,8 @@
 - name: Converge
   hosts: all
   tasks:
+    - name: Add user john
+      user:
+        name: john
     - include_role:
         name: "infra"
