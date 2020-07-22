@@ -1,0 +1,8 @@
+---
+- name: Ensure documents dir is present
+  hosts: instance1
+  tasks:
+    - name: Create dir
+      file: 
+        path: ~/documents
+        state: directory

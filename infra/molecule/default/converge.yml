@@ -5,5 +5,8 @@
     - name: Add user john
       user:
         name: john
+    - name: Add user mike
+      user: 
+        name: mike
     - include_role:
         name: "infra"
