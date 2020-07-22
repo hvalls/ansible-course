@@ -17,3 +17,9 @@
         dest: "~/server.js"
     - name: "Start app"
       command: "forever start ~/server.js"
+    - name: "Smoke test"
+      get_url:
+        url: http://localhost:8080/
+        dest: ~/response.json
+      become: yes
+      become_user: john
