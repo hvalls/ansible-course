@@ -5,4 +5,5 @@ const server = http.createServer((req, res) => {
   res.end('{ "success": true }');
 });
 
-server.listen(8080, () => console.log("Server listening at port 8080"));
+const port = process.env.PORT || 8080;
+server.listen(port, () => console.log("Server listening at port 8080"));
