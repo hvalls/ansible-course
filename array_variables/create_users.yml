@@ -1,0 +1,11 @@
+---
+- name: "Setup users"
+  hosts: instance1
+  tasks: 
+    - name: "Create users"
+      user:
+        name: "{{ item.name }}"
+        uid: "{{ item.uid }}"
+      with_items:
+        - { name: test_user1, uid: 1003 }
+        - { name: test_user2, uid: 1004 }
