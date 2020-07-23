@@ -1,6 +1,10 @@
 ---
 - name: "Run Node app"
   hosts: instance1
+  pre_tasks:
+    - name: Update yum packages
+      yum: 
+        update_cache: yes
   tasks:
     - name: "Install Node"
       yum:
