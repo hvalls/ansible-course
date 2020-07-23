@@ -1,0 +1,30 @@
+---
+- name: "Run Node app"
+  hosts: instance1
+  tasks:
+    - name: "Install Node"
+      yum:
+        name: nodejs
+        state: latest
+    - name: "Install 'forever'"
+      npm:
+        name: forever
+        state: latest
+        global: yes
+    - name: "Copy server.js"
+      copy: 
+        src: server.js
+        dest: ~/server.js
+    - name: "List running apps"
+      command: forever list
+      register: forever_list
+      changed_when: false
+    - name: "Start app"
+      command: forever start ~/server.js
+      when: forever_list.stdout.find('server.js') == -1
+    - name: "Smoke test"
+      get_url:
+        url: http://localhost:8080/
+        dest: ~/response.json
+      become: yes
+      become_user: john
