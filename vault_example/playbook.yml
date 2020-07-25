@@ -1,0 +1,9 @@
+---
+
+- name: Call service
+  hosts: instance1
+  vars_files:
+    - api_key.yml
+  tasks:
+    - debug: 
+        msg: "Calling service with API key {{ api_key }}"
