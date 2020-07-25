@@ -1,4 +1,13 @@
 ---
 - hosts: instance1
   tasks:
-    - debug: var=ansible_facts.ansible_local.config.langs['john']
+    - debug: var=ansible_facts.ansible_local.config
+
+    - lineinfile:
+        path: /etc/ansible/facts.d/config.fact
+        line: "sara=en"
+
+    - name: "Reload facts"
+      setup: filter=ansible_local
+
+    - debug: var=ansible_facts.ansible_local.config
