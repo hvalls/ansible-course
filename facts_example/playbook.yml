@@ -1,0 +1,4 @@
+---
+- hosts: instance1
+  tasks:
+    - debug: var=ansible_facts.ansible_local.config.langs['john']
