@@ -1,0 +1,19 @@
+---
+- hosts: instance1
+  tasks:   
+    - debug:
+        msg: "Executing MacOS task"
+      tags: 
+        - unix
+    - debug: 
+        msg: "Executing Ubuntu task"
+      tags:
+        - unix
+    - debug: 
+        msg: "Executing Windows 7 task"
+      tags:
+        - windows
+    - debug: 
+        msg: "Executing Windows 10 task"
+      tags:  
+        - windows

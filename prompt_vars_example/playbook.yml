@@ -1,0 +1,8 @@
+---
+- hosts: instance1
+  vars_prompt:
+    - name: username
+      prompt: "What's your name?"
+  tasks:
+    - debug: 
+        msg: "Hello {{ username }}!"
