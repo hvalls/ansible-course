@@ -1,0 +1,9 @@
+---
+- hosts: instance1
+  tasks:
+    - include: user_config.yml
+      vars:
+        username: antonio
+    - include: user_config.yml
+      vars: 
+        username: martina
