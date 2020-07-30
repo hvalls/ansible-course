@@ -12,3 +12,8 @@
 
 - debug:
     msg: "App directory: {{ app_dir }}"
+
+- name: Template provisioning summary file
+  template: 
+    src: summary.txt.j2
+    dest: /root/summary.txt
