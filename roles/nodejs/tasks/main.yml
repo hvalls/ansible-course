@@ -1,0 +1,14 @@
+---
+- name: Install node
+  yum:
+    name: nodejs
+    state: latest
+  
+- name: Install forever
+  npm:
+    name: forever
+    state: latest
+    global: yes 
+
+- debug:
+    msg: "App directory: {{ app_dir }}"

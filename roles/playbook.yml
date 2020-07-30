@@ -1,0 +1,6 @@
+---
+- hosts: instance1
+  roles:
+    - nodejs
+  tasks:
+    - debug: msg="Deploying app..."
