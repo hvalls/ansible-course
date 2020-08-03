@@ -1,0 +1,22 @@
+---
+- hosts: all
+  tasks:
+    - name: "Check nodejs"
+      yum:
+        name: nodejs
+        state: installed
+      register: nodejs_status
+    - name: "Assert nodejs installed"
+      assert:
+        that: 
+          - not nodejs_status.changed
+    - name: "Check forever"
+      npm:
+        name: forever
+        state: present
+        global: yes
+      register: forever_status
+    - name: "Assert forever installed"
+      assert:
+        that:
+          - not forever_status.changed
