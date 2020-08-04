@@ -1,6 +1,8 @@
 ---
 - name: "Run Node app"
   hosts: instance1
+  vars_files:
+    - vars.yml
   tasks:
     - name: "Install Node"
       yum:
@@ -20,7 +22,7 @@
       register: forever_list
       changed_when: false
     - name: "Start app"
-      command: forever start ~/server.js
+      command: PORT={{ server_port }} forever start ~/server.js
       when: forever_list.stdout.find('server.js') == -1
       notify: smoke test
 

@@ -17,16 +17,8 @@
       copy: 
         src: server.js
         dest: ~/server.js
-    - name: "List running apps"
-      command: forever list
-      register: forever_list
-      changed_when: false
     - name: "Start app"
       shell: PORT={{ server_port }} forever start ~/server.js
-      when: forever_list.stdout.find('server.js') == -1
-      notify: smoke test
-
-  handlers:
     - name: "Smoke test"
       get_url:
         url: http://localhost:{{ server_port }}/
