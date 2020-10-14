@@ -1,36 +1,47 @@
 ---
-- name: "Run Node app"
+- name: Deploy Node App
   hosts: instance1
   vars_files:
     - vars.yml
+  pre_tasks:
+    - name: Update yum cache
+      yum:
+        update_cache: true
   tasks:
-    - name: "Install Node"
+    - name: Install Node
       yum:
         name: nodejs
         state: latest
-    - name: "Install 'forever'"
+    - name: Install NPM
       npm:
         name: forever
         state: latest
-        global: yes
-    - name: "Copy server.js"
+        global: true
+    - name: Copy source code
       copy: 
         src: server.js
         dest: ~/server.js
-    - name: "List running apps"
+      register: source_code
+    - name: List running apps
       command: forever list
       register: forever_list
-      changed_when: false
-    - name: "Start app"
-      command: PORT={{ server_port }} forever start ~/server.js
-      when: forever_list.stdout.find('server.js') == -1
-      notify: smoke test
+    - set_fact:
+        is_running: "{{ forever_list.stdout.find('server.js') != -1 }}"
+        new_version: "{{ source_code.changed }}"
+    - name: Start application
+      shell: PORT={{ server_port }} forever start ~/server.js
+      when: not is_running
+      notify: started
+    - name: Start new version
+      shell: PORT={{ server_port }} forever restart ~/server.js
+      when: is_running and new_version
+      notify: started
 
   handlers:
-    - name: smoke test
+    - name: Smoke test
+      listen: started
       get_url:
-        url: http://localhost:8080/
+        url: http://localhost:{{ server_port }}/
         dest: ~/response.json
-      become: yes
+      become: true
       become_user: john
-
