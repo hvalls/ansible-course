@@ -24,6 +24,7 @@
       register: source_code
     - name: List running apps
       command: forever list
+      changed_when: false
       register: forever_list
     - set_fact:
         is_running: "{{ forever_list.stdout.find('server.js') != -1 }}"
