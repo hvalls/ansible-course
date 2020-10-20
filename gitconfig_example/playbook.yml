@@ -3,5 +3,5 @@
   hosts: instance1
   tasks:
     - copy:
-        src: "gitconfig"
+        src: "new.gitconfig"
         dest: "~/.gitconfig"
