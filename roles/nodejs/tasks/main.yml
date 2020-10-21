@@ -15,6 +15,3 @@
     src: summary.txt.j2
     dest: ~/summary.txt
 
-- name: prueba
-  debug:
-    msg: "Esto es una prueba"
