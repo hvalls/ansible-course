@@ -1,3 +1,2 @@
 ---
-
-app_dir: /root/apps
+#tomcat_download_url: "https://ftp.cixug.es/apache/tomcat/tomcat-8/{{ tomcat_version }/bin/apache-tomcat-{{ tomcat_version }}.zip"

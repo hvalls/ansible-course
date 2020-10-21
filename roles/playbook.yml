@@ -1,5 +1,6 @@
 ---
-- hosts: instance1
+- name: Deploy nodejs app
+  hosts: instance1
   roles:
     - nodejs
   tasks:

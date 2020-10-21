@@ -1,5 +1,7 @@
 ---
-- hosts: all
+- hosts: test_instance
+  vars_files:
+    - ../../vars/main.yml
   tasks:
     - name: "Check nodejs"
       yum:
@@ -13,7 +15,7 @@
     - name: "Check forever"
       npm:
         name: forever
-        state: present
+        version: "{{ forever_version }}"
         global: yes
       register: forever_status
     - name: "Assert forever installed"

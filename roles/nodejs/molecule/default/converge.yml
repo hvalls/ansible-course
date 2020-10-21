@@ -1,8 +1,5 @@
 ---
 - name: Converge
-  hosts: all
-  vars:
-    - username: john
-  tasks:
-    - include_role:
-        name: "nodejs"
+  hosts: test_instance
+  roles:
+    - nodejs

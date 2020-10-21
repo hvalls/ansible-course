@@ -7,13 +7,14 @@
 - name: Install forever
   npm:
     name: forever
-    state: latest
+    version: "{{ forever_version }}"
     global: yes 
 
-- debug:
-    msg: "App directory: {{ app_dir }}"
+- name: Template summary file
+  template: 
+    src: summary.txt.j2
+    dest: ~/summary.txt
 
-#- name: Template provisioning summary file
-#  template: 
-#    src: summary.txt.j2
-#    dest: /root/summary.txt
+- name: prueba
+  debug:
+    msg: "Esto es una prueba"
