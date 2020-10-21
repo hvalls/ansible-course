@@ -1,0 +1,6 @@
+---
+- name: Create directories
+  file:
+    path: "/home/{{ item }}/{{ dir_name }}"
+    state: directory
+  with_items: "{{ users }}"

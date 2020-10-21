@@ -1,9 +1,0 @@
----
-- name: Create user
-  user: 
-    name: "{{ username }}" 
-
-- name: Create Pictures directory
-  file:
-    path: "/home/{{ username }}/Pictures"
-    state: directory

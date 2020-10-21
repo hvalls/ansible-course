@@ -1,0 +1,16 @@
+---
+- name: Configure users
+  hosts: instance1
+  vars: 
+    users:
+      - manuel
+      - adriana
+  tasks:
+    - name: Create users 
+      include: create_users.yml
+
+    - name: Create pictures dirs
+      include: create_dir.yml
+      vars:
+        dir_name: pictures
+
