@@ -1,0 +1,11 @@
+---
+- name: Backup logs
+  hosts: instance1
+  tasks: 
+    - name: Compress log files
+      archive:
+        path: "{{ item }}"
+        dest: "{{ item }}.gz"
+      with_items:
+        - ~/apache.log
+        - ~/application.log
