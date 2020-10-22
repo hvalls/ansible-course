@@ -1,6 +1,8 @@
 ---
 - name: Deploy nodejs app
   hosts: instance1
+  vars_files:
+    - vars.yml
   roles:
     - nodejs
   tasks:
