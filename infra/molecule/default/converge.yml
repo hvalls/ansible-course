@@ -8,5 +8,9 @@
     - name: Add user mike
       user: 
         name: mike
+    - name: Install vim
+      apt:
+        name: vim
+        state: present
     - include_role:
         name: "infra"

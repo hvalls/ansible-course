@@ -5,7 +5,7 @@ driver:
   name: docker
 platforms:
   - name: instance1
-    image: docker.io/pycontribs/centos:8
+    image: pycontribs/debian
     pre_build_image: true
     exposed_ports:
       - 8080/tcp
@@ -13,10 +13,10 @@ platforms:
       - 0.0.0.0:8080:8080/tcp
       - 0.0.0.0:9090:9090/tcp
   - name: instance2
-    image: docker.io/pycontribs/centos:8
+    image: pycontribs/debian
     pre_build_image: true
   - name: instance3
-    image: docker.io/pycontribs/centos:8
+    image: pycontribs/debian
     pre_build_image: true
 provisioner:
   name: ansible
