@@ -4,15 +4,23 @@
   vars_files:
     - vars.yml
   pre_tasks:
-    - name: Update yum cache
-      yum:
+    - name: Update apt cache
+      apt:
         update_cache: true
+    - name: Install sudo
+      apt:
+        name: sudo
+        state: latest
   tasks:
     - name: Install Node
-      yum:
+      apt:
         name: nodejs
         state: latest
-    - name: Install NPM
+    - name: Install npm
+      apt:
+        name: npm
+        state: latest
+    - name: Install forever
       npm:
         name: forever
         state: latest

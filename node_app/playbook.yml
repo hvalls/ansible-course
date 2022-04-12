@@ -2,13 +2,21 @@
 - name: "Run Node app"
   hosts: instance1
   pre_tasks:
-    - name: Update yum packages
-      yum: 
+    - name: Update apt packages
+      apt: 
         update_cache: yes
+    - name: Install sudo
+      apt:
+        name: sudo
+        state: latest
   tasks:
-    - name: "Install Node"
-      yum:
+    - name: Install Node
+      apt:
         name: nodejs
+        state: latest
+    - name: "Install npm"
+      apt:
+        name: npm
         state: latest
     - name: "Install 'forever'"
       npm:

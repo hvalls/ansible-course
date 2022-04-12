@@ -3,10 +3,22 @@
   hosts: instance1
   vars_files: 
     - vars.yml
+  pre_tasks:
+    - name: Update apt packages
+      apt: 
+        update_cache: yes
+    - name: Install sudo
+      apt:
+        name: sudo
+        state: latest
   tasks:
     - name: "Install Node"
-      yum:
+      apt:
         name: nodejs
+        state: latest
+    - name: "Install npm"
+      apt:
+        name: npm
         state: latest
     - name: "Install 'forever'"
       npm:
