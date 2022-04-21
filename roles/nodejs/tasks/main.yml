@@ -1,15 +1,17 @@
 ---
-- name: Install node
-  yum:
+- name: Install Node
+  apt:
     name: nodejs
     state: latest
-  
+- name: Install npm
+  apt:
+    name: npm
+    state: latest
 - name: Install forever
   npm:
     name: forever
     version: "{{ forever_version }}"
-    global: yes 
-
+    global: true
 - name: Template summary file
   template: 
     src: summary.txt.j2

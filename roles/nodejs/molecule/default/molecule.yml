@@ -5,7 +5,7 @@ driver:
   name: docker
 platforms:
   - name: test_instance
-    image: docker.io/pycontribs/centos:8
+    image: python:bullseye
     pre_build_image: true
 provisioner:
   name: ansible

@@ -1,17 +1,27 @@
 ---
 - hosts: test_instance
   vars_files:
+    - ../../defaults/main.yml
     - ../../vars/main.yml
   tasks:
     - name: "Check nodejs"
-      yum:
+      apt:
         name: nodejs
-        state: installed
+        state: present
       register: nodejs_status
     - name: "Assert nodejs installed"
       assert:
         that: 
           - not nodejs_status.changed
+    - name: "Check npm"
+      apt:
+        name: npm
+        state: present
+      register: npm_status
+    - name: "Assert npm installed"
+      assert:
+        that: 
+          - not npm_status.changed
     - name: "Check forever"
       npm:
         name: forever
