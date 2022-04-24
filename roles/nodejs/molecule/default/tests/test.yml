@@ -1,0 +1,5 @@
+package:
+  nodejs:
+    installed: true
+  npm: 
+    installed: true
