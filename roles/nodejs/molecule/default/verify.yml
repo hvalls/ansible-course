@@ -1,34 +1,22 @@
 ---
-- hosts: test_instance
-  vars_files:
-    - ../../defaults/main.yml
-    - ../../vars/main.yml
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
   tasks:
-    - name: "Check nodejs"
-      apt:
+    - apt:
         name: nodejs
         state: present
       register: nodejs_status
-    - name: "Assert nodejs installed"
+    - name: nodejs is installed
       assert:
-        that: 
-          - not nodejs_status.changed
-    - name: "Check npm"
-      apt:
-        name: npm
-        state: present
-      register: npm_status
-    - name: "Assert npm installed"
-      assert:
-        that: 
-          - not npm_status.changed
-    - name: "Check forever"
-      npm:
+        that: "{{ nodejs_status.changed }} is false"
+    - npm:
         name: forever
-        version: "{{ forever_version }}"
-        global: yes
+        state: present
+        global: true
       register: forever_status
-    - name: "Assert forever installed"
+    - name: forever is installed
       assert:
-        that:
-          - not forever_status.changed
+        that: "{{ forever_status.changed }} is false"

@@ -4,20 +4,10 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: test_instance
+  - name: test_instance1
     image: python:bullseye
     pre_build_image: true
 provisioner:
   name: ansible
 verifier:
   name: ansible
-scenario:
-  name: default
-  test_sequence:
-    - destroy
-    - syntax 
-    - create
-    - converge
-    - verify
-    - destroy
-   

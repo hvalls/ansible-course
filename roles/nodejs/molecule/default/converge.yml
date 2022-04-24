@@ -1,5 +1,7 @@
 ---
 - name: Converge
-  hosts: test_instance
-  roles:
-    - nodejs
+  hosts: all
+  tasks:
+    - name: "Include nodejs"
+      include_role:
+        name: "nodejs"
