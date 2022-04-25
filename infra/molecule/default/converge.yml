@@ -8,6 +8,10 @@
     - name: Add user mike
       user: 
         name: mike
+    - name: Install sudo
+      apt:
+        name: sudo
+        state: present
     - name: Install vim
       apt:
         name: vim
