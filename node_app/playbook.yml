@@ -5,10 +5,6 @@
     - name: Update apt packages
       apt: 
         update_cache: yes
-    - name: Install sudo
-      apt:
-        name: sudo
-        state: latest
   tasks:
     - name: Install Node
       apt:
