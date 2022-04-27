@@ -1,0 +1,9 @@
+---
+- name: install redis
+  apt:
+    name: redis-server
+    state: latest
+
+- name: start redis server
+  shell: "nohup redis-server &"
+

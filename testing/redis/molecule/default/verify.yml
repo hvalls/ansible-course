@@ -1,0 +1,18 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+  - apt:
+      name: redis-server
+      state: latest
+    register: redis_status
+  - assert:
+      that: "{{ not redis_status.changed }}"
+
+  - wait_for:
+      port: 6379
+      timeout: 5
+
