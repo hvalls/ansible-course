@@ -1,0 +1,9 @@
+package: 
+  redis-server:
+    installed: true
+
+port:
+  tcp:6379:
+    listening: true
+    ip:
+    - 0.0.0.0

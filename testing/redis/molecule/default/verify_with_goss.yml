@@ -1,0 +1,24 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  vars:
+    - goss_url: https://github.com/aelsabbahy/goss/releases/latest/download/goss-linux-amd64
+    - goss_bin: /usr/local/bin/goss
+  tasks:
+    - name: Download goss
+      get_url:
+        url: "{{ goss_url }}"
+        dest: "{{ goss_bin }}"
+        mode: 0755
+    - name: Copy test files
+      copy:
+        src: tests/test.yml
+        dest: /tmp/test.yml
+    - name: Run tests
+      command: "{{ goss_bin }} -g /tmp/test.yml validate --format json"
+      register: result
+    - name: Check tests
+      assert:
+        that: "{{ item.successful }}"
+      with_items: "{{ (result.stdout | from_json).results }}"
