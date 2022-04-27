@@ -1,0 +1,2 @@
+[cacheservers]
+pb_test_instance1 ansible_connection=docker

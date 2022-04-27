@@ -1,0 +1,9 @@
+---
+- name: setup redis server
+  hosts: cacheservers
+  roles:
+    - redis
+  tasks:
+    - name: more things
+      debug:
+        msg: "doing more things..."
