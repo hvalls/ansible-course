@@ -7,3 +7,10 @@ port:
     listening: true
     ip:
     - 0.0.0.0
+
+command:
+  cli:
+    exec: redis-cli ping
+    exit-status: 0
+    stdout:
+      - PONG
