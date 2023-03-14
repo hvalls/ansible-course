@@ -1,0 +1,11 @@
+instance1
+
+[backendservers]
+instance2
+
+[frontendservers]
+instance3 
+
+[devservers:children]
+backendservers
+frontendservers
