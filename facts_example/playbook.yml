@@ -5,7 +5,7 @@
 
     - lineinfile:
         path: /etc/ansible/facts.d/config.fact
-        line: "sara=en"
+        line: "user=1"
 
     - name: "Reload facts"
       setup: filter=ansible_local
