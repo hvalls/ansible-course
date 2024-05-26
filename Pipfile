@@ -10,7 +10,7 @@ ansible = "==8.7.0"
 docker = "==7.1.0"
 molecule = "==24.2.1"
 molecule-docker = "==2.1.0"
-requests = "==2.31.0"
+requests = "==2.32.2"
 
 [requires]
 python_version = "3.10"
