@@ -2,6 +2,6 @@
 - name: Ensure gitconfig file is present
   hosts: instance1
   tasks:
-    - copy:
-        src: "new.gitconfig"
+    - template:
+        src: "gitconfig.j2"
         dest: "~/.gitconfig"
