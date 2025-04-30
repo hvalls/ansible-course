@@ -5,3 +5,4 @@
     - template:
         src: "gitconfig.j2"
         dest: "~/.gitconfig"
+    - command: "cat ~/.gitconfig"
