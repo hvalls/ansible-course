@@ -1,0 +1,13 @@
+---
+- hosts: instance1
+  tasks:
+    - debug: var=ansible_facts.ansible_local.server
+
+    - lineinfile:
+        path: /etc/ansible/facts.d/server.fact
+        line: "environment=dev"
+
+    - name: "Reload facts"
+      setup: filter=ansible_local
+
+    - debug: var=ansible_facts.ansible_local.server
